@@ -1,0 +1,14 @@
+print("Hello World!")
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+
+sum_result = num1 + num2
+product_result = num1 * num2
+quotient_result = num1 / num2
+subtraction_result = num1 - num2
+
+print("This are the results for the respective cases!")
+print(f"The sutraction result is :{subtraction_result}")
+print(f"The sum result is :{sum_result}")
+print(f"The product result is :{product_result}")
+print(f"The division result is :{quotient_result}")

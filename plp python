@@ -1,0 +1,86 @@
+age= 45
+name = "Joram"
+
+print(f"My name is: {name}")
+print(type(age))
+
+if age>=50:
+    print("Old!")
+elif(age>30):
+    print("Millenial!")
+else:
+    print("Genz!")
+
+#If
+student_name = str(input("What is the student's name? "))
+marks = int(input("What is the student's marks? "))
+
+if marks>=90:
+    grade= "A"
+elif marks>80:
+    grade="B"
+else :
+    grade="C"
+
+print(f"{student_name}'s grade is: {grade}")
+
+#For loop
+for number in range(1,5):
+    print(number)
+
+#while loop
+salary = 3000
+while (salary>0):
+    print(salary)
+    salary -= 1000
+print("No more money!")
+
+#lists
+subjects= ["English","Swahili","Maths"]
+subjects[0]="French"
+subjects.append("Germany")
+print(subjects)
+
+#tuples
+markes =(30,60,40)
+print(markes[0])
+
+#sets
+unique_food ={"Ugali","chapati","Ugali","uji"}
+print(unique_food)
+
+#dictionary
+school_info ={"names" :"JKUAT","Courses": "Engineering","Area" :"Juja"}
+school_info["names"] = "KU"
+print(school_info["names"])
+
+#functions
+def greet(first_name):
+    print("How is your day "+first_name+".")
+greet("Joram")
+
+#function2
+def majina(first_names,second_name):
+    return first_names+" "+second_name
+full_name = majina("Joram","Maina")
+print(full_name)
+
+#Return function3
+def product (x,y):
+    return x+y
+result = product(7,9)
+print(result)
+
+#import
+import random
+random_value = random.randint(1,30)
+print(random_value)
+
+#challenge to get odd and even no
+for value in range(1,100):
+    if value % 2== 0:
+        print(f"{value} is an Even number")
+    else:
+        print(f"{value} is an Odd number")
+
+
