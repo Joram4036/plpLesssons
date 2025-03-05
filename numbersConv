@@ -1,0 +1,10 @@
+x = 10
+y= 10.5
+z = 10j
+
+#converting to diffrent number type
+
+a = float(x)
+b = int(y)
+c = complex(x)
+print(f"{a},{b},{c}")

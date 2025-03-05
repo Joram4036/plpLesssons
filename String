@@ -1,0 +1,21 @@
+print("Joram is good")
+print('Joram is good')
+print("Joram is 'good'")
+
+print(""" Joaram is good
+      joram is good
+      joram is good
+      """)
+
+a = """joram is good
+joram is good,
+joram is ggod
+joram is good
+"""
+
+print(a)
+print(len(a))
+print("good" in a) #check if a name is in a variable
+
+if "joram" in a:
+    print("Yes, Joram is a candidate")

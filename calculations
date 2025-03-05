@@ -1,0 +1,7 @@
+def amount_per_week (loanAmount, multiplier):
+    name = str(input("What is you name? "))
+    resultdiv= loanAmount/1000
+    resultmult = resultdiv* multiplier
+    print(f"{name} has this money per week {resultmult}")
+
+amount_per_week(60000,70)

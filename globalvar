@@ -1,0 +1,13 @@
+name = str(input("What is your name? "))
+
+def user_name():
+    print(name)
+
+user_name()
+
+def user_marks():
+    global marks
+    marks = 70
+    print(marks)
+
+user_marks()

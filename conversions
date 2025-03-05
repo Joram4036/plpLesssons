@@ -1,0 +1,4 @@
+user_input = (input("What is you age? "))
+
+x= int(float(user_input))
+print(x)

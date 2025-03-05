@@ -1,0 +1,5 @@
+import random
+
+randomNo = random.randrange(1,30)
+
+print(randomNo)
