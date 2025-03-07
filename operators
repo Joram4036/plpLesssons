@@ -1,0 +1,39 @@
+#Arithmetic operators
+a=10
+b=2
+
+print(a+b)
+print(a-b)
+print(a/b)
+print(a*b)
+print(a**b) #like the power of
+
+c = a%b
+if c == 0:
+    print("This is an even number!")
+else:
+    print("This is an odd number")
+
+
+#Assignment operators
+
+d=4
+d +=1
+d -=1
+d*=1
+d /=1
+
+#Comparison operators
+a >b
+a >= b
+a <b
+a != b
+
+#Logical operators
+#or |
+#and 
+
+#Identity operators
+#Membership operators
+#Bitwise operators
+

@@ -1,0 +1,28 @@
+#created using []
+#changable
+
+fruits= ["Pineapple","Melon","Apple"]
+numbers = [1,4,7,3,8]
+mixed = ["John",4,10,"Mary"]
+new_way = list(("Joram", 50, "Mark"))
+print(fruits)
+print(numbers)
+print(mixed)
+print (new_way)
+print (len(fruits))
+
+fruits[0]="mango"
+mixed[0:3]=["Maish",5,90]
+fruits.insert(2,"Ugali")
+mixed.append("Kombo")
+print(fruits)
+print(mixed)
+
+print (fruits[0])
+print(numbers[2:3])
+print(numbers[2:])
+
+if 5 in numbers:
+    print(" 5 is a member")
+else:
+    print("No member known as 5")

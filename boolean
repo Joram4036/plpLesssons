@@ -1,0 +1,9 @@
+name = str(input("What is your name? ")).upper()
+
+if name == "JORAM" :
+    print("Joram is back")
+
+else:
+    print("New member")
+
+print(10>9)
