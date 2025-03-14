@@ -1,0 +1,9 @@
+names= ["Joram","Maina","Kombo","Man"]
+x=0
+
+for name in names:
+    print(name)
+
+while x < len(names):
+    print(names[x])
+    x += 1

@@ -1,0 +1,15 @@
+num1 = float(input("Input your number one: "))
+num2 = float(input("Input your number one: "))
+sign = input("What arithmetic sign do you wish to perform: ")
+
+if sign == "+":
+    result = num1 + num2
+if sign == "/":
+    result = num1/num2
+if sign == "*":
+    result = num1*num2
+if sign == "-":
+    result = num1-num2
+
+print(f"{num1} {sign} {num2} =")
+print(result)

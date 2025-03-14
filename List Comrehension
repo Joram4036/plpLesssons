@@ -1,0 +1,20 @@
+names = ["Ann","Hope","Maina","Mark","Beth"]
+new_names = []
+for x in names:
+    if "a" in x:
+        new_names.append(x)
+print(new_names)
+
+names = ["Luke","Faith","Lucy","Angela"]
+a_names=[y for y in names if "a" in y]
+print(a_names)
+
+age =[34,23,12,56,34,23,11,13,2]
+over_18 = []
+for n in age:
+    if n >= 18:
+        over_18.append(n)
+print(over_18)
+
+age = [54,4,76,80,9,7,65]
+over_30= [z for z in age if z>= 30]

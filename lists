@@ -13,14 +13,39 @@ print (len(fruits))
 
 fruits[0]="mango"
 mixed[0:3]=["Maish",5,90]
+
+#adding
 fruits.insert(2,"Ugali")
 mixed.append("Kombo")
+new_way.extend(numbers)
+
+print(new_way)
 print(fruits)
 print(mixed)
-
 print (fruits[0])
 print(numbers[2:3])
 print(numbers[2:])
+
+#remove
+print(new_way)
+new_way.remove(new_way[0])
+print(new_way)
+#pop
+print(new_way)
+new_way.pop(2)
+print(new_way)
+#delete
+print(new_way)
+del new_way[0]
+print(new_way)
+#clear
+print(new_way)
+new_way.clear()
+print(new_way)
+
+for x in numbers:
+    print(x)
+
 
 if 5 in numbers:
     print(" 5 is a member")
