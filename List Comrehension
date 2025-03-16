@@ -16,5 +16,11 @@ for n in age:
         over_18.append(n)
 print(over_18)
 
-age = [54,4,76,80,9,7,65]
-over_30= [z for z in age if z>= 30]
+numbers=[1,2,3,4,5,6,7,8,9]
+result =[]
+for n in numbers:
+    if n%2==0:
+        result.append(n**2)
+    else:
+        result.append(n**3)
+print(result)
