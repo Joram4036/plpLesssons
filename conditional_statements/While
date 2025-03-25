@@ -1,0 +1,8 @@
+budget=int(input("What is your budget? "))
+
+while budget > 100:
+    item=input("What do you want to buy? ")
+    price=int(input("What is the price of the item? "))
+    budget=budget-price
+    print(f"You have {budget} dollars left.")
+print("You are out of budget.")

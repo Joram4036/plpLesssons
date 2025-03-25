@@ -1,0 +1,20 @@
+def new_user():
+    name = input("What is your name? ")
+    while True:
+        try:
+            age = int(input("What is your age? "))
+            break  # Exit the loop if age is successfully converted to int
+        except ValueError:
+            print("Invalid input. Please enter a valid age.")
+    
+    if age >= 18:
+        print("You are an adult.")
+    else:
+        print("You are not an adult.")
+    
+    print(f"Hello {name}.")
+    print(f"You are {age} years old.")
+
+new_user()
+
+
