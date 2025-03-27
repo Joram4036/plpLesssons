@@ -1,0 +1,10 @@
+games= ["Chess", "Football", "Checkers", "Fortnite"]
+
+for game in games:
+    print(game)
+
+for number in range(3,10):
+    print(number)
+
+
+    

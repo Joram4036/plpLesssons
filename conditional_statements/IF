@@ -1,0 +1,9 @@
+tempareture= int(input("What is the temperature? "))
+
+if tempareture > 30:
+    print("It is warm.")
+elif tempareture > 20:
+    print("It is cool.")
+else:
+    print("It is cold.")
+print("Done")
