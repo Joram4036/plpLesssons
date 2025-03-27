@@ -1,0 +1,92 @@
+students={
+    "name":"Joram",
+    "age":21,
+    "school" :"jkuat"
+}
+print(students["name"])
+students["name"]="Mark" #changing the value of an item
+print(students["name"])
+students.update({"name":"Ann"})#changing the value
+print(students["name"])
+
+#another way to create a dictionary
+schools=dict(
+    names="JKUAT", 
+    course="tech",
+    year="2025")
+print(schools)
+schools.pop("year")#removing or deleting a key pair
+print(schools)
+schools.clear() #clear the key in the dictionary
+print(schools)
+
+
+#accessing the elements in the dictionary
+info=dict(
+    fname="John",
+    mname="Mary",
+    dbirth="2020"
+        )
+print(info)
+print(info["fname"])
+print(info.get("fname"))
+x= info.keys() #getting the keys of the set
+print(x)
+y= info.values() #get the values of the set
+print(y)
+z= info.items() #get all the items i the set
+print(z)
+
+car=dict(
+    name="Ford",
+    year=2004,
+    model="Suzuki"
+)
+print(car)
+for x in car.keys():
+    print(x)
+
+for y in car.values():
+    print(y)
+
+for z,a in car.items(): #access the values one by one
+    print(z,a)
+
+# nested dictionary
+myfamily = {
+  "child1" : {
+    "name" : "Emil",
+    "year" : 2004
+  },
+  "child2" : {
+    "name" : "Tobias",
+    "year" : 2007
+  },
+  "child3" : {
+    "name" : "Linus",
+    "year" : 2011
+  }
+}
+
+print(myfamily)
+
+child1 = {
+  "name" : "Emil",
+  "year" : 2004
+}
+child2 = {
+  "name" : "Tobias",
+  "year" : 2007
+}
+child3 = {
+  "name" : "Linus",
+  "year" : 2011
+}
+
+myfamily = {
+  "child1" : child1,
+  "child2" : child2,
+  "child3" : child3
+}
+
+print(myfamily)

@@ -1,0 +1,61 @@
+# Rental system
+# sets for uniquely identify a tenant
+# tuples to not change the 
+# lists to identify the houses
+# function to add tenent
+# funtion to add housesfuntion to ensure payment is done
+# funtion to mark if the room is vacant or available 
+# function for type of house and Rental
+
+def add_tenant():
+    tenant_name= input("What is your name?\t")
+    while True:
+        try:
+            tenant_number=int(input("Input your Phone Number:\t"))  
+            break      
+        
+        except ValueError:
+            print("Please input only numbers!")
+    
+    tenant_email= input("Input your email:\t")
+
+    # Storing tenant details in a dictionary
+    tenant_details = {
+        "name" :tenant_name,
+        "email" :tenant_email,
+        "phone": tenant_number
+    }
+
+    print("Tenant successfully added")
+    print(tenant_details)
+
+    return tenant_details   # Returns details in case you need to use them later
+
+def main_page():
+    print("Welcome to Kuivery Homes>")
+    print("========================")
+    print("What do you want to do? Choose from the options.")
+    print("(1)\tRent a house\n(2).\tCheck available houses.\n(3).\tMake payment.\n(4.)\tRegister as a tenant.")
+    while True:
+        try:
+            choice = int(input("Input option (1-4)\t"))
+            if choice in range(1,5): 
+                break                      
+            else:
+                print("Choose an option between (1-4)")
+
+        except ValueError:    # Handles non-integer inputs
+            print("Choose only numbers between (1-4)")
+
+    if choice==1 :    # Ensures choice is 1, 2, or 3 or 4
+        print(f"You choose option {choice}. Which is (Rent a house)")
+    elif choice==2:
+        print(f"You choose option {choice}. Which is (Check available houses)")  
+    elif choice==3: 
+        print(f"You choose option {choice}. Which is (Make payment)")
+    elif choice==4: 
+        print(f"You choose option {choice}. Which is (Register as a tenant)")
+        add_tenant()
+
+main_page()
+

@@ -1,0 +1,272 @@
+# <!-- Challenge: Bookstore Inventory Manager
+# Scenario
+# You run a small online bookstore and want to keep track of:
+
+# The books you have in stock (title, price, quantity, genre, etc.).
+# Unique genres in your store.
+# Basic operations like adding/removing books, checking stock, and viewing details.
+# Requirements
+# Book Data Structure
+
+# Use a dictionary to represent each book’s details.
+# Keys could be: "title", "price", "quantity", "genre", etc.
+# Example structure for a single book:
+# python
+# Copy
+# Edit
+# {
+#   "title": "Atomic Habits",
+#   "price": 1200,         # in KES, for example
+#   "quantity": 5,
+#   "genre": "Self-Help"
+# }
+# Inventory
+
+# Use a list to store multiple book dictionaries.
+# Example:
+# python
+# Copy
+# Edit
+# inventory = [
+#   {"title": "Atomic Habits", "price": 1200, "quantity": 5, "genre": "Self-Help"},
+#   {"title": "Clean Code",    "price": 2500, "quantity": 2, "genre": "Programming"}
+# ]
+# Unique Genres
+
+# Maintain a set of all genres available in your bookstore.
+# Each time you add a book, update the set with the new book’s genre.
+# Example:
+# python
+# Copy
+# Edit
+# genres = {"Self-Help", "Programming"}
+# Special Fields (Tuples)
+
+# Suppose each book has a fixed discount range that won’t change once set (like (min_discount, max_discount)).
+# Store this as a tuple inside each book dictionary if you want an extra challenge.
+# Example:
+# python
+# Copy
+# Edit
+# "discount_range": (5, 10)  # 5% to 10% discount
+# Basic Operations
+
+# Add a Book:
+# Prompt the user (or just define a function) to enter book details and append a new dictionary to the inventory.
+# Update the genres set with the new book’s genre.
+# Remove a Book:
+# Find the book by title and remove it from inventory.
+# (Optional) If no more books of that genre remain, remove the genre from the genres set.
+# View All Books:
+# Print out the inventory in a readable format.
+# Check/Update Stock:
+# Given a title, show how many copies are left.
+# Let the user update the quantity (e.g., if a new shipment arrives).
+# Search by Genre:
+# Given a genre, list all books in that genre.
+# Booleans & Operators
+
+# Keep a variable, e.g. store_open = True, and use it to control whether you keep prompting the user for actions.
+# Use comparison operators (like ==, >, <) to handle user choices or check book quantities.
+# Use logical operators (like and, or) if needed for filtering books.
+# Extras
+
+# Use casting (e.g., int() for price and quantity) to ensure the user’s input is the correct data type.
+# Use strings to format output nicely (e.g., f"Title: {book['title']}, Price: {book['price']} KES").
+# Include comments in your code to explain what each part does. -->
+
+# ===============================
+#  Bookstore Inventory Manager
+# ===============================
+
+def add_book(inventory, genres):
+    """
+    Adds a new book to the inventory and updates the genres set.
+    """
+    title = input("Enter book title: ").strip()
+    genre = input("Enter book genre: ").strip()
+
+    # Safely convert price and quantity to integers
+    try:
+        price = int(input("Enter book price (integer): ").strip())
+        quantity = int(input("Enter quantity in stock: ").strip())
+    except ValueError:
+        print("Invalid price or quantity. Please enter numbers only.")
+        return  # Exit early if user inputs invalid data
+
+    # Prompt for optional discount range
+    discount_input = input("Enter discount range (e.g., 5,10) or leave blank: ").strip()
+    if discount_input:
+        try:
+            min_disc, max_disc = discount_input.split(',')
+            discount_range = (int(min_disc), int(max_disc))
+        except ValueError:
+            print("Invalid discount range. Expected format: '5,10'")
+            return
+    else:
+        discount_range = (0, 0)  # or None
+
+    # Create the new book dictionary
+    new_book = {
+        "title": title,
+        "price": price,
+        "quantity": quantity,
+        "genre": genre,
+        "discount_range": discount_range
+    }
+
+    # Add to inventory
+    inventory.append(new_book)
+    # Update genres set
+    genres.add(genre)
+
+    print(f"\nBook '{title}' added successfully!\n")
+
+
+def remove_book(inventory, genres):
+    """
+    Removes a book from the inventory by title.
+    If the removed book was the last of its genre, also remove that genre from the set.
+    """
+    title_to_remove = input("Enter the title of the book to remove: ").strip()
+
+    # Find book index
+    book_index = None
+    for i, book in enumerate(inventory):
+        if book["title"].lower() == title_to_remove.lower():
+            book_index = i
+            break
+
+    if book_index is not None:
+        removed_book = inventory.pop(book_index)
+        print(f"\nBook '{removed_book['title']}' removed from inventory.\n")
+
+        # Check if there are any more books of that genre
+        book_genre = removed_book["genre"]
+        if not any(b["genre"] == book_genre for b in inventory):
+            genres.discard(book_genre)
+            print(f"Genre '{book_genre}' removed from the genres set (no more books of this genre).\n")
+    else:
+        print(f"\nBook '{title_to_remove}' not found in inventory.\n")
+
+
+def view_books(inventory):
+    """
+    Prints all books in the inventory in a readable format.
+    """
+    if not inventory:
+        print("\nNo books in inventory.\n")
+        return
+
+    print("\n--- Current Book Inventory ---")
+    for i, book in enumerate(inventory, start=1):
+        title = book["title"]
+        price = book["price"]
+        quantity = book["quantity"]
+        genre = book["genre"]
+        disc_range = book["discount_range"]
+        print(f"{i}. Title: {title}")
+        print(f"   Price: {price} (KES)")
+        print(f"   Quantity: {quantity}")
+        print(f"   Genre: {genre}")
+        print(f"   Discount Range: {disc_range[0]}% - {disc_range[1]}%\n")
+
+
+def check_stock(inventory):
+    """
+    Checks the stock of a particular book and optionally updates it.
+    """
+    title_to_check = input("Enter the title of the book to check: ").strip()
+
+    for book in inventory:
+        if book["title"].lower() == title_to_check.lower():
+            print(f"\nCurrent stock for '{book['title']}': {book['quantity']}")
+            update = input("Do you want to update the quantity? (yes/no): ").strip().lower()
+            if update == "yes":
+                try:
+                    new_qty = int(input("Enter new quantity: ").strip())
+                    book["quantity"] = new_qty
+                    print(f"Quantity updated to {new_qty}.\n")
+                except ValueError:
+                    print("Invalid quantity. Please enter a number.\n")
+            return
+    print(f"\nBook '{title_to_check}' not found in inventory.\n")
+
+
+def search_by_genre(inventory):
+    """
+    Lists all books belonging to a particular genre.
+    """
+    genre_to_search = input("Enter the genre to search: ").strip()
+    found_books = [book for book in inventory if book["genre"].lower() == genre_to_search.lower()]
+
+    if found_books:
+        print(f"\nBooks in the genre '{genre_to_search}':")
+        for book in found_books:
+            print(f" - {book['title']} (Price: {book['price']} KES, Quantity: {book['quantity']})")
+        print()
+    else:
+        print(f"\nNo books found for genre '{genre_to_search}'.\n")
+
+
+def main():
+    # Initialize data
+    inventory = [
+        {
+            "title": "Atomic Habits",
+            "price": 1200,
+            "quantity": 5,
+            "genre": "Self-Help",
+            "discount_range": (5, 10)
+        },
+        {
+            "title": "Clean Code",
+            "price": 2500,
+            "quantity": 2,
+            "genre": "Programming",
+            "discount_range": (10, 20)
+        }
+    ]
+
+    # Create a set of genres from existing inventory
+    genres = {book["genre"] for book in inventory}
+
+    store_open = True
+
+    print("\nWelcome to the Bookstore Inventory Manager!")
+    print("============================================\n")
+
+    while store_open:
+        print("What would you like to do?")
+        print("1) Add a Book")
+        print("2) Remove a Book")
+        print("3) View All Books")
+        print("4) Check/Update Stock")
+        print("5) Search Books by Genre")
+        print("6) View Genres")
+        print("7) Exit")
+
+        choice = input("\nEnter your choice (1-7): ").strip()
+
+        if choice == "1":
+            add_book(inventory, genres)
+        elif choice == "2":
+            remove_book(inventory, genres)
+        elif choice == "3":
+            view_books(inventory)
+        elif choice == "4":
+            check_stock(inventory)
+        elif choice == "5":
+            search_by_genre(inventory)
+        elif choice == "6":
+            print(f"\nUnique genres in the store: {genres}\n")
+        elif choice == "7":
+            print("\nExiting the Bookstore Inventory Manager. Goodbye!\n")
+            store_open = False
+        else:
+            print("\nInvalid choice. Please try again.\n")
+
+
+# Run the program
+if __name__ == "__main__":
+    main()
